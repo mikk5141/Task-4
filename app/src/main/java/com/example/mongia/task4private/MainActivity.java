@@ -8,12 +8,11 @@ import android.view.MenuItem;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     String searchText;
     private TextView tv;
+    private String url = "https://api.github.com/search/repositories?q=";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchText = query;
-                tv.setText(searchText);
+                url = url + "[" + searchText + "]";
+                tv.setText(url);
+                url = "https://api.github.com/search/repositories?q=";
                 return false;
             }
             @Override
